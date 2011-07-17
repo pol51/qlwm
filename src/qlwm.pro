@@ -12,7 +12,8 @@ toolbar.cpp\
 wborder.cpp\
 winfo.cpp\
 winlist.cpp\
-xwindow.cpp
+xwindow.cpp \
+clock.cpp
 
 HEADERS =\
 apbar.h\
@@ -30,7 +31,8 @@ toolbar.h\
 wborder.h\
 winfo.h\
 winlist.h\
-xwindow.h
+xwindow.h \
+clock.h
 
 QMAKE_INCDIR += /usr/X11R6/include
 QMAKE_CLEAN += qlwm

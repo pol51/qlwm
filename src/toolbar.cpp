@@ -9,76 +9,88 @@
 #include "defs.h"
 #include "qapp.h"
 #include "toolbar.h"
+#include "clock.h"
 
 pager   *tb_pg;     // pager
 winlist *tb_wl;     // winlist
 menu    *tb_mn;     // menu
 procbar *tb_pb;     // procbar
 apbar   *tb_ap;     // apbox
+Clock   *tb_cl;     // clock
 
 Toolbar::Toolbar(QWidget *parent) : QFrame(parent)
 {
-	layout = new QHBoxLayout(0);
-	layout->setSpacing(1);
-	
-	setFrameStyle(QFrame::Panel|QFrame::Raised);
-	setLineWidth(1);
+  layout = new QHBoxLayout(0);
+  layout->setSpacing(1);
 
-	setGeometry(0, (defaults::toolbar_top)?(0):(QApplication::desktop()->height()-defaults::tb_height),
-	QApplication::desktop()->width(), defaults::tb_height);
+  setFrameStyle(QFrame::Panel|QFrame::Raised);
+  setLineWidth(1);
 
-	layout->addSpacing(4);
+  setGeometry(0, (defaults::toolbar_top)?(0):(QApplication::desktop()->height()-defaults::tb_height),
+  QApplication::desktop()->width(), defaults::tb_height);
 
-	// pager
-	tb_pg = new pager(this);
-	layout->addWidget(tb_pg);
-	layout->addSpacing(3);
+  layout->addSpacing(4);
 
-	// winlist
-	if(defaults::show_winlist)
-	{
-		tb_wl = new winlist(this);
-		layout->addWidget(tb_wl);
-	}
-	else
-		tb_wl = new winlist(0);
+  // pager
+  tb_pg = new pager(this);
+  layout->addWidget(tb_pg);
+  layout->addSpacing(3);
 
-	// menu
-	if(defaults::show_menu)
-	{
-		tb_mn = new menu(this);
-		layout->addWidget(tb_mn);
-	}	
-	else
-		tb_mn = new menu(0);
-		
-	tb_mn->readmenu();
+  // winlist
+  if(defaults::show_winlist)
+  {
+    tb_wl = new winlist(this);
+    layout->addWidget(tb_wl);
+  }
+  else
+    tb_wl = new winlist(0);
 
-	if(defaults::show_menu || defaults::show_winlist)
-		addsep();
+  // menu
+  if(defaults::show_menu)
+  {
+    tb_mn = new menu(this);
+    layout->addWidget(tb_mn);
+  }
+  else
+    tb_mn = new menu(0);
 
-	// procbar
-	tb_pb = new procbar(this);
-	tb_pb->setFixedHeight(defaults::tc_height);
-	layout->addWidget(tb_pb);
+  tb_mn->readmenu();
 
-	tb_ap = new apbar(this);
-	layout->addWidget(tb_ap);
+  if(defaults::show_menu || defaults::show_winlist)
+    addsep();
 
-	layout->addSpacing(2);
-	layout->setMargin(1);
-	setLayout(layout);
-	show();
+  // procbar
+  tb_pb = new procbar(this);
+  tb_pb->setFixedHeight(defaults::tc_height);
+  layout->addWidget(tb_pb);
+
+  // app bar
+  tb_ap = new apbar(this);
+  layout->addWidget(tb_ap);
+
+  // spacer
+  QWidget *Spacer = new QWidget(this);
+  Spacer->setSizePolicy(QSizePolicy::Expanding, Spacer->sizePolicy().verticalPolicy());
+  layout->addWidget(Spacer);
+
+  // clock
+  tb_cl = new Clock(this);
+  layout->addWidget(tb_cl);
+
+  layout->addSpacing(2);
+  layout->setMargin(1);
+  setLayout(layout);
+  show();
 }
 
 void Toolbar::addsep(void)
 {
-	layout->addSpacing(3);
-	QFrame *frame = new QFrame(this);
-	frame->setLineWidth(1);
-	frame->setMidLineWidth(0);
-	frame->setFrameStyle(QFrame::VLine|QFrame::Sunken);
-	frame->setFixedHeight(height()-4);
-	layout->addWidget(frame);
-	layout->addSpacing(3);
+  layout->addSpacing(3);
+  QFrame *frame = new QFrame(this);
+  frame->setLineWidth(1);
+  frame->setMidLineWidth(0);
+  frame->setFrameStyle(QFrame::VLine|QFrame::Sunken);
+  frame->setFixedHeight(height()-4);
+  layout->addWidget(frame);
+  layout->addSpacing(3);
 }
