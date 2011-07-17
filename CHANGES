@@ -1,0 +1,80 @@
+1.1 Fixed compile problem that occured with some gcc versions. 
+    Worked around different appearance of a frame style with 
+    newer Qt versions.
+    Qt 2.2.0 seems to set the name resource to 'unnamed' so that
+    window managers fail to identify programs. Worked around by 
+    using the class resource instead.
+
+1.2 A change in event processing after Qt 2.0.2 has caused a 
+    strange appearance after resizing windows.
+    
+1.3 Implemented keyboard support
+
+1.4 Possible to disable display of menu and winlist buttons on the toolbar
+
+1.5 Rohit Jalan <rohitj@prakashcotton.com> has done some improvements on the
+    keyboard support and added the 'end session' function to the menu.
+
+1.6 Implemented the screenmode (see manpage)    
+
+1.7 Fixes the bug that rowcolumn alignment was incorrect in screenmode.
+    
+1.8 Restart the WM after change of defaults file.  Don't remove buttons of
+    mapped windows after accessing them from the keyboard.
+
+1.9 Bugfix: One application has placed parts at wrong positions on the screen.
+    Reason was that a synthetic configure notify was sent to the client only
+    after resizing but not after moving.
+
+2.0 Automatically exclude shaped windows from screenmode.
+    Allow reference to applications in a name,class format.
+    Add check for system mail directory to biff makefile.
+
+2.1 Fixes a bug in mail indicator that was made in 2.0: It didn't work 
+    without the mail environment variable anymore.
+
+2.2 Keyboard support was partially broken after upgrading to Qt 2.2.4. There
+    was a change in the focus behaviour of menus, perhaps of no interest for
+    a normal application but for a window manager that has to deal with xlib
+    events.
+
+2.3 Added configurability for Qt style and maximize functions.
+    The winlist marks selected windows on the pager.
+    Forward color changes to toolbar clients.
+    
+2.4 Allow user specified configuration directory.
+    Implemented screen tiling mode.
+    Added flags to exclude specific windows from tiling and screen mode.
+    Added hide-window key.
+    Added numbering for windows with the same title.
+
+2.5 The wininfo function (middle mouse button on window title) does now
+    show a settings screen.
+    Restore the size of a tiled maximized window after it was iconified.
+    Added appdefaults flag to skip keyboard access.
+
+2.6 Realized menu internals (kill, end) with keywords for better configurability.
+    Shaped windows show a resize handle by default.
+    Some minor fixes.
+
+3.0 Compiles with Qt3.
+    Allow to specify Qt3 style plugins.
+
+3.1 Mail indicator: occasional wrong indication on some platforms. 
+    SIGTERM to qlwm killed X session.
+    Default links against qt-mt (-thread).
+    Install private configuration files with make install-config. 
+
+4.0 Port to Qt4.
+    This and that.
+
+4.1 Fix text formatting in winfo
+    Fix Makefile related compile issue on some platforms
+  
+4.2 Fix a memory leak in apbar
+    Changes for build system and avoid QTDIR method because this is obsolete in Qt4
+
+4.3 A small fix in the event handler was necessary to avoid some weirdness after 
+    upgrading to Qt4.4
+    Iconified windows map always on the current desktop now.
+    Added a StayOnBottom function.

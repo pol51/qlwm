@@ -1,0 +1,137 @@
+./" Manual page for qlwm
+.TH QLWM 1
+.SH NAME
+qlwm \- X11 window manager
+.SH SYNOPSIS
+.B qlwm
+[
+\-\fItoolkitoption\fP ...
+]
+[
+.B \-c 
+.I configdir
+]
+[
+.B --version
+]
+.SH DESCRIPTION
+
+.B qlwm
+is yet another window manager for the X11 system. It is based on Qt4 and 
+designed to be small and easy to maintain.
+
+One of the design rules was to get a non-intrusive environment that
+does not bother the user with unnecessary details or features while
+providing comfort and high functionality. 
+.B qlwm
+does not make any preferences for the toolkits that applications use.
+
+.SH WINDOW BUTTONS
+
+.TP
+.B Left button
+Left mouse button is used to iconify the window. Middle mouse button
+toggles screen tiling on/off. Right mouse button is used to (un)maximize to the
+rim of the toolbar.
+.TP
+.B Window title
+Left mouse button moves the window. Middle mouse button shows a settings menu and 
+window information. Right mouse button is used to (un)maximize to full screen size.
+
+Opening the settings window and pressing the permanent button will modify the file 
+appdefaults in your private configuration directory and apply changes to all windows
+with the same reference. The temporary button applies changes only to the current window. 
+Note that the appdefaults file must already exists and must be writeable to use the
+permanent function.
+.TP
+.B Right button
+Used for soft kill. For hanging windows use the kill window function
+from the menu button.
+
+.SH TOOLBAR
+
+Use the pager to flip between virtual desktops. The workspace is a continuous
+geometry and the pager will show a miniature of the desktop layout.
+
+The winlist button can be used to show a list of all currently active windows
+and allows direct access. The right mouse button will bring the last fully 
+obscured window into the foreground.
+
+Icon handling:
+
+.B qlwm
+uses autoscaling of server supplied icons. If no icon is present it
+will utilize the additional space for text. There is no manual user 
+configuration required (and not possible).
+
+To save space on the toolbar, the application buttons will appear if the
+user iconifies a window. The buttons of mapped windows will disappear
+automatically if new space is required.
+
+.SH DISPLAY MODES
+In addition to floating windows,
+.B qlwm
+supports a fullscreen and a tiling window management. Screenmode is mainly useful
+for text based applications for which window frames are not necessary. The <ALT+F11>
+key combination is used to toggle this on/off.
+In screenmode it is possible to navigate between windows on a desktop with
+the <ALT+Tab> and <ALT+Shift+Tab> key combinations or to add windows from other
+desktops by using the winlist. Tiling mode can be toggled on/off for the current
+desktop with the <ALT+F10> key combination. The purpose is to have the best overview
+on a desktop and to automate window placement with a good screen utilization. All
+tileable windows will be shown without overlapping and a larger frame on the left
+side contains the maximized window. The second maximize function (right click on the
+window title) will swap the selected window with the maximized window on the left
+frame. From the keyboard this can be accomplished by selecting a window with the
+<ALT+Tab> and <ALT+Shift+Tab> key combinations. 
+
+.SH KEYBOARD
+Key assignment is currently compile stuff and can be changed in keyboard.h
+.TP
+.B <ALT+Shift+Tab>
+Goto previous window on virtual desktop.
+.TP
+.B <ALT+Tab>
+Goto next window on virtual desktop.
+.TP
+.B <Ctrl+Shift+Tab>
+Goto previous virtual desktop.
+.TP
+.B <Ctrl+Tab>
+Goto next virtual desktop.
+.TP
+.B <ALT+F12>
+Bring the last window into foreground that is either fully obscured by other windows
+or behind tiled windows.
+.TP
+.B <ALT+F11>
+Toggle screenmode. In screenmode the windowmanager becomes invisible. You can use the
+keyboard to navigate between windows on the current desktop but always in fullscreen.
+.TP
+.B <ALT+F10>
+Toggle tiling mode. This will show all tileable windows on a desktop.
+.TP
+.B <ALT+F9>
+Hide window (show it on the winlist but don't add a button).
+.TP
+.B <Ctrl+Esc>
+Popup window list.
+.TP
+.B <Alt+Esc>
+Popup menu.
+
+.SH CUSTOMIZATION
+
+Three documented files are used: defaults for general startup settings, 
+appdefaults for application specific settings (including the toolbar
+applets) and menuconfig for the menu button. 
+
+The files appear in the global directory <BASE>/files and, if present, in
+the directory ~/.qlwm below the users home directory. Generally, all files
+from the global directory can be copied into the local directory.
+
+.SH FILES
+.B ~/.qlwm
+User specific customization
+.SH AUTHOR
+Alexander Linden <alinden@gmx.de>

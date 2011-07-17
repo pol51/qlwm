@@ -1,0 +1,2 @@
+Shows a small envelope only if mail is present. Changes the color if new
+mail arrives. Can be swallowed by the qlwm toolbar.

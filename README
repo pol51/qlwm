@@ -1,0 +1,26 @@
+It should be enough to do just:
+
+make
+make install
+
+then change back to your user account and type:
+
+make install-config
+
+to create your private ~/.qlwm configuration directory. 
+
+The build was tested with Qt-4.4.1. If it fails, take a look at the 
+Makefile and make sure that you use the correct qmake for your version. 
+If this fails, check if the QMAKESPEC environment variable needs manual 
+setting (something like export QMAKESPEC=/usr/local/share/qt4/mkspecs/<ostype>).
+
+Make install will place all files in a common hierarchy below /usr/local/qlwm
+(you can change this in the toplevel makefile), one additional link to 
+qlwm in /usr/local/bin, and the manpage. The simplest way to make X11 aware
+of it is however by running qlwm from your ~/.xinitrc file if you start X11
+with a startx command or from ~/.xsession if you use xdm login. You should
+see something that is preconfigured enough to start work with it.
+
+See the manpage for usage information. The latest version can be found at
+http://www.alinden.mynetcologne.de/qlwm 
+
