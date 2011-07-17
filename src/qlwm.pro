@@ -35,3 +35,5 @@ xwindow.h
 QMAKE_INCDIR += /usr/X11R6/include
 QMAKE_CLEAN += qlwm
 
+RESOURCES += \
+    ../files/icons.qrc

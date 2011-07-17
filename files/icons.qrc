@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>button_left.xpm</file>
+        <file>button_right.xpm</file>
+        <file>tiled.xpm</file>
+        <file>winlist.xpm</file>
+        <file>menu.xpm</file>
+    </qresource>
+</RCC>
